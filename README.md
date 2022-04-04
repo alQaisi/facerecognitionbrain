@@ -1,3 +1,14 @@
+## Facerecognitionbrain App
+  this apps was created using React(front end) and NodeJs(back-end)
+  It covers a lot of web development basics and I used a lot of libraries and packages in it like mongodb for database,mongoose to interact with the database
+  bycrypt to hash the user's password.
+
+this is the repository for the front-end files,you can click the link to see the full deployment of the application
+[Click Here](https://alqaisi.github.io/facerecognitionbrain/).
+
+To see the back end code you can click the link to go to the repository of the back end files
+[Click Here](https://alqaisi.github.io/facerecognitionbrain/).
+
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
 ## Available Scripts
