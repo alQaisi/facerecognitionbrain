@@ -7,120 +7,9 @@ import FaceRecognition from './components/FaceRecognition/FaceRecognition';
 import Particles from 'react-particles-js';
 import Signin from './components/SignIn/Signin';
 import Register from './components/Register/Register';
+import particlesOptions from "./particlesOptions";
 import './App.css';
 
-
-
-const particlesOptions={
-  "particles": {
-    "number": {
-      "value": 35,
-      "density": {
-        "enable": true,
-        "value_area": 800
-      }
-    },
-    "color": {
-      "value": "#ffffff"
-    },
-    "shape": {
-      "type": "circle",
-      "stroke": {
-        "width": 0,
-        "color": "#000000"
-      },
-      "polygon": {
-        "nb_sides": 5
-      },
-      "image": {
-        "src": "img/github.svg",
-        "width": 100,
-        "height": 100
-      }
-    },
-    "opacity": {
-      "value": 0.2,
-      "random": false,
-      "anim": {
-        "enable": true,
-        "speed": 3,
-        "opacity_min":1,
-        "sync": true
-      }
-    },
-    "size": {
-      "value": 7,
-      "random": true,
-      "anim": {
-        "enable": true,
-        "speed": 80,
-        "size_min": 0.1,
-        "sync": true
-      }
-    },
-    "line_linked": {
-      "enable": true,
-      "distance": 250,
-      "color": "#ffffff",
-      "opacity": .5,
-      "width": 2
-    },
-    "move": {
-      "enable": true,
-      "speed": 7,
-      "direction": "top-right",
-      "random": false,
-      "straight": false,
-      "out_mode": "bounce",
-      "bounce": false,
-      "attract": {
-        "enable": true,
-        "rotateX": 1600,
-        "rotateY": 1200
-      }
-    }
-  },
-  "interactivity": {
-    "detect_on": "canvas",
-    "events": {
-      "onhover": {
-        "enable": false,
-        "mode": "repulse"
-      },
-      "onclick": {
-        "enable": true,
-        "mode": "push"
-      },
-      "resize": true
-    },
-    "modes": {
-      "grab": {
-        "distance": 800,
-        "line_linked": {
-          "opacity": 1
-        }
-      },
-      "bubble": {
-        "distance": 800,
-        "size": 80,
-        "duration": 2,
-        "opacity": 0.8,
-        "speed": 3
-      },
-      "repulse": {
-        "distance": 400,
-        "duration": 0.4
-      },
-      "push": {
-        "particles_nb": 4
-      },
-      "remove": {
-        "particles_nb": 2
-      }
-    }
-  },
-  "retina_detect": true
-}
 class App extends Component {
   constructor(){
     super();
@@ -136,17 +25,15 @@ class App extends Component {
           email:"",
           password: "",
           entries: 0,
-          joined: ""
       }
     }
   }
   loadUser=(data)=>{
     this.setState({user:{
-      id:data.id,
+      id:data._id,
       name:data.name,
       email:data.email,
-      entries:data.entries,
-      joined:data.joined
+      entries:data.facesNum,
     }});
   }
   calculateFaceLocation=(data)=>{
@@ -191,8 +78,8 @@ class App extends Component {
                 headers:{'Content-type':'application/json'},
                 body: JSON.stringify({
                 id:this.state.user.id,
-                facesNum:faceLocation.length
-                  })
+                facesNumber:faceLocation.length
+                })
               })
             .then(response=>response.json())
             .then(count=>{

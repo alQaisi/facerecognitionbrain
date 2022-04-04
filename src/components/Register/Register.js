@@ -30,10 +30,11 @@ class Register extends React.Component{
         })
         .then(resp=>resp.json())
         .then(user=>{
-            if(user.id){
+            if(user._id){
                 this.props.loadUser(user);
                 this.props.onRouteChange('home');
-            }
+            }else
+                alert("please try using another email, or try again later");
           })
         //console.log(this.state);
     }
